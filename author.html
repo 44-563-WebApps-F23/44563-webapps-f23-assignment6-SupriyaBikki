@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Author Information using Javascript</title>
+ </head>
+<body>
+<h1>Author entry Supriya Bikki</h1>
+<form>
+    <label for="pwd">The hidden author name</label><br>
+    <input type="password" id="pwd" value= "Dickens" name="pwd">
+    <br/><br/>
+    <label for="guessAuthor">Guess the author:</label>
+    <input type="text" id="guessAuthor" name="guessAuthor" required>
+    <br/><br/>
+    <input  type="button" onclick= "checkAuthor()" value="Check the guess">
+  </form>
+  <p id="countGood"></p>
+  <p id="countOops"></p>
+<script>
+var good = 0;
+var oops = 0;
+function checkAuthor() {
+var authorPassword = document.getElementById("pwd").value;
+var authorGuess = document.getElementById("guessAuthor").value;
+if (authorPassword == authorGuess) {
+    good++;
+    alert("You got it right");
+} else {
+    oops++;
+    alert("Sorry");  
+}
+document.getElementById("countGood").innerHTML = good;
+document.getElementById("countOops").innerHTML = oops;
+}
+</script>
+</body>
+</html> 
