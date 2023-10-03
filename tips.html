@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tip amounts</title>
+    </head>
+    <body>
+        <h1>Supriya Bikki shows tip amounts</h1>
+
+        <p id="Results"></p>
+        <form>
+            <div class="form-group">
+                <label for = "base amount">Enter base amount</label>   
+                <input type="number" id="baseAmount" class="form-control" value="50"/>
+                </div>
+                <div class="form-group">
+                    <label for="tipPercent">Enter the tip percent</label>
+                    <input type="number" id="tipPercent" class="form-control" value="15" />
+                </div><br/>
+               <div class="form-group">
+                <button type="button" class="btn btn-primary" onclick="tips()">Show tip</button>
+               </div>
+               <br/>
+            </form>
+
+            <script>
+            function tips(){
+                console.log("fdffd")         
+                let baseAmount = parseFloat(document.getElementById("baseAmount").value);
+                let tipPercent = parseFloat( document.getElementById("tipPercent").value);          
+                let myOutput = "";
+               for(let i =0 ; i<=5 ; i++){          
+                const calculateTip = baseAmount * (1 + (tipPercent + i * 4) / 100);
+                myOutput += `For <b>${tipPercent + i * 4}%</b> percent the calculated tip is: <b>${calculateTip.toFixed(2) }</b><br/> `;           
+               }
+               document.getElementById("Result").innerHTML = myOutput;            
+            }
+            </script>
+    </body>
+</html>

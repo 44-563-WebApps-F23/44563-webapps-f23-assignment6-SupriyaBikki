@@ -2,8 +2,10 @@
 <html>
  <head>
     <title>Author Information using Javascript</title>
+
  </head>
 <body>
+    <div class="container">
 <h1>Author entry Supriya Bikki</h1>
 <form>
     <label for="pwd">The hidden author name</label><br>
@@ -16,7 +18,31 @@
   </form>
   <p id="countGood"></p>
   <p id="countOops"></p>
+  <div class="img-container">
+    <img id="displaying" onclick="selectImage()" src="./kansas.jpg" alt="city" width="100" height="100" class="img"/>
+  </div>
+</div>
 <script>
+
+var useImage = 1;
+
+function selectImage(){
+    var img1 = document.getElementById("displaying");
+    switch (useImage) {
+        case 1:
+        img1.src = "./Illinois.jpg";
+        useImage = 2;
+        break;
+        case 2 :
+        img1.src = "./Indiana.jpg" ;
+        useImage = 3;
+        break;
+        case 3 :
+        img1.src = "./kansas.jpg" ;
+        useImage = 1;
+        break;
+    }
+}
 var good = 0;
 var oops = 0;
 function checkAuthor() {
@@ -33,5 +59,6 @@ document.getElementById("countGood").innerHTML = good;
 document.getElementById("countOops").innerHTML = oops;
 }
 </script>
+
 </body>
 </html> 
