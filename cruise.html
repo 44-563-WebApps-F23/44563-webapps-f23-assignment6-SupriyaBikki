@@ -2,26 +2,43 @@
 <html>
     <head>
         <title>Checkboxes</title>
+        
     </head>
     <body>
         <h1>Supriya Bikki goes on a cruise</h1>
-    </body>
+    
     <div class="myform">
         <form>
             <div class="form-group">
-                <input type="checkbox" class="form-check-input" id="sharesCabin" value="True" name="mathOperation"  onclick="chooseUp()"/>  
+                <input type="checkbox" class="form-check-input" id="sharesCabin" value="True" name="mathOperation"  />  
                 <label for="cabin">Shares Cabin</label>      
             </div>
             <div class="form-group">      
-                <input type="checkbox" class="form-check-input" id="breakfast" value="True" name="mathOperation"  onclick="chooseUp()"/>
+                <input type="checkbox" class="form-check-input" id="breakfast" value="True" name="mathOperation"  />
             <label for="breakfast">Breakfast</label>
             </div>      
             <div class="form-group">
-                <input type="checkbox" class="form-check-input" id="poolpass" value="False" name="mathOperation"  onclick="chooseUp()"/>        
+                <input type="checkbox" class="form-check-input" id="poolpass" value="False" name="mathOperation" />        
             <label for="poolpass">Pool Pass</label>
             </div><br/>        
            <button type="button" class="btn btn-primary" onclick="selectCruise()">Select a cruise</button><br/>
         </form>
+        <form id="updatedForm">
+            <div class="form-group">     
+                <label for="days">Enter the number of days : </label><br>
+                <input class="form-control" type="text" id="days" name="days">   
+            </div>
+            <div class="form-group">       
+            <label for="price">Enter price :</label><br>
+            <input class="form-control" type="text" id="price" name="price">
+            </div><br/>    
+            <div class="form-group">
+                <button class="btn btn-primary" type="button" onclick="updateCruise()">Update the cruise</button>       
+            </div>  
+
+          </form>
+          <br/><br/>
+          <p id="result"></p>
     </div>
     <script>
     let my_cruise = {} ;
@@ -33,6 +50,15 @@
     }
     document.getElementById('result').innerHTML = JSON.stringify(my_cruise);
 }
-has context menu
-    </script>
+
+function updateCruise() {
+    console.log("sai")
+let days = document.getElementById('days').value;
+let price = document.getElementById('price').value;
+my_cruise['days'] = days;
+my_cruise['price'] = price;
+document.getElementById('result').innerHTML = JSON.stringify(my_cruise);
+}
+</script>
+</body>
 </html>
