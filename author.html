@@ -3,24 +3,39 @@
  <head>
     <title>Author Information using Javascript</title>
 
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" 
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
  </head>
 <body>
     <div class="container">
 <h1>Author entry Supriya Bikki</h1>
 <form>
-    <label for="pwd">The hidden author name</label><br>
-    <input type="password" id="pwd" value= "Dickens" name="pwd">
-    <br/><br/>
-    <label for="guessAuthor">Guess the author:</label>
-    <input type="text" id="guessAuthor" name="guessAuthor" required>
-    <br/><br/>
-    <input  type="button" onclick= "checkAuthor()" value="Check the guess">
+    <div class="form-group">
+        <label for="pwd">The hidden author name</label><br>
+        <input class="form-control" type="password" id="pwd" value= "Dickens" name="pwd">
+    </div>
+    
+    <div class="form-group">
+        <label for="guessAuthor">Guess the author:</label>
+        <input type="text" class="form-control" id="guessAuthor" name="guessAuthor" required>
+    </div>
+    
+    
+    <input  type="button"  class="btn btn-success" id="authorBtn" onclick= "checkAuthor()" value="Check the guess">
   </form>
-  <p id="countGood"></p>
-  <p id="countOops"></p>
-  <div class="img-container">
+  <p id="mycountGood"></p>
+  <p id="mycountOops"></p>
+  
     <img id="displaying" onclick="selectImage()" src="./kansas.jpg" alt="city" width="100" height="100" class="img"/>
-  </div>
+
 </div>
 <script>
 
@@ -55,8 +70,17 @@ if (authorPassword == authorGuess) {
     oops++;
     alert("Sorry");  
 }
-document.getElementById("countGood").innerHTML = good;
-document.getElementById("countOops").innerHTML = oops;
+
+if(oops>6){
+    let authButton = document.getElementById('authorBtn');
+    authButton.onclick = errorMsg;
+}
+document.getElementById("mycountGood").innerHTML = good;
+document.getElementById("mycountOops").innerHTML = oops;
+}
+
+function errorMsg(){
+    alert("Sorry, ran out of guesses");
 }
 </script>
 
