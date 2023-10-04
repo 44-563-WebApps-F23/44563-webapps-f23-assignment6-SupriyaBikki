@@ -2,17 +2,28 @@
 <html>
     <head>
         <title>Tip amounts</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" 
+          integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> -->
+
     </head>
     <body>
         <h1>Supriya Bikki shows tip amounts</h1>
+        <div class="myform">
 
-        <p id="Results"></p>
+        <p id="ResultsTip"></p>
         <form>
             <div class="form-group">
                 <label for = "base amount">Enter base amount</label>   
                 <input type="number" id="baseAmount" class="form-control" value="50"/>
-                </div>
-                <div class="form-group">
+             </div>
+            <div class="form-group">
                     <label for="tipPercent">Enter the tip percent</label>
                     <input type="number" id="tipPercent" class="form-control" value="15" />
                 </div><br/>
@@ -22,17 +33,51 @@
                <br/>
             </form>
 
+            <form>
+                <div class="form-group">
+                    <input class="form-check-input" type="radio" id="sum" value="sum" name="mathOperation"  onclick="chooseOp()"/>      
+                    <label for="sum">sum</label>
+                    </div>  
+                <div class="form-group">
+                    <input  class="form-check-input"  type="radio" id="difference" value="difference" name="mathOperation"  onclick="chooseOp()"/>      
+                    <label for="diff">diff</label>
+                    </div>
+                <div class="form-group">
+                    <input type="radio" id="product"  class="form-check-input" value="product" name="mathOperation"  onclick="chooseOp()"/>
+                    <label for="mult">mult</label>        
+                </div>
+                </form>  
+            <p id="radioResult"></p>
+            </div>
+
             <script>
-            function tips(){
-                console.log("fdffd")         
+            function chooseOp(){
+                let baseAmount = parseFloat(document.getElementById("baseAmount").value);
+                let tipPercent = parseFloat( document.getElementById("tipPercent").value);
+                let tipVal = parseFloat((baseAmount * tipPercent)/100);
+                let operation = document.querySelector('input[name="mathOperation"]:checked').value;
+                let outPut = "";
+                switch (operation) {
+                    case 'sum':
+                        outPut = `The sum is ${baseAmount} + ${tipVal} = ${baseAmount + tipVal}`;
+                        break;
+                    case 'difference':
+                        outPut = `The diff is ${baseAmount} - ${tipVal} = ${baseAmount - tipVal}`;
+                        break;
+                    case 'product':
+                        outPut = `The multiplication is ${baseAmount} * ${tipVal} = ${baseAmount * tipVal}`;
+                }
+                document.getElementById("radioResult").innerHTML = outPut;
+}
+            function tips(){        
                 let baseAmount = parseFloat(document.getElementById("baseAmount").value);
                 let tipPercent = parseFloat( document.getElementById("tipPercent").value);          
                 let myOutput = "";
                for(let i =0 ; i<=5 ; i++){          
                 const calculateTip = baseAmount * (1 + (tipPercent + i * 4) / 100);
-                myOutput += `For <b>${tipPercent + i * 4}%</b> percent the calculated tip is: <b>${calculateTip.toFixed(2) }</b><br/> `;           
+                myOutput += `percentage is <b>${tipPercent + i * 4}%</b> and amount + tip is: <b>${calculateTip.toFixed(2) }</b><br/> `;           
                }
-               document.getElementById("Result").innerHTML = myOutput;            
+               document.getElementById("ResultsTip").innerHTML = myOutput;            
             }
             </script>
     </body>
